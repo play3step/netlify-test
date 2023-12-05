@@ -1,35 +1,25 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom"
-
-import "./App.css"
-import Celebirity from "./routers/celebirity";
-import Movies from "./routers/movies";
-import NotFound from "./routers/notFound";
-import TV from "./routers/tv";
-import Home from "./routers/home";
-import Header from "./components/header";
-import DetailPage from "./routers/detailPage";
-import { LoginPage } from "./components/Login/loginPage";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Home from "./components/home/Home";
+import Celebrity from "./components/celebrity/Celebrity";
+import NotFound from "./components/NotFound";
+import Detail from "./components/Detail";
+import Login from "./components/login/Login";
+import SpreadDatas from "./components/SpreadDatas";
 
 function App() {
   return (
-    <div className="container">
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/movies" element={<Movies />}></Route>
-          <Route path="/celebirity" element={<Celebirity />}></Route>
-          <Route path="/TV" element={<TV />}></Route>
-          <Route path="/*" element={<NotFound />}></Route>
-          <Route path="/detail/:title" element={<DetailPage />}></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Routes>
+      <Route exact path="/" element={<Home />} />
+      <Route path="/person" element={<Celebrity />} />
+      <Route path="/tv" element={<SpreadDatas />} />
+      <Route path="/tv/:tv" element={<Detail />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/movie" element={<SpreadDatas />} />
+      <Route path="/movie/:movie" element={<Detail />} />
+      <Route path="/*" element={<NotFound />} />
+    </Routes>
   );
 }
 
